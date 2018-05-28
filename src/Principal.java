@@ -7,7 +7,7 @@ public class Principal {
         Lexer lexer = new Lexer(datos);
         Lexer.Token token;
         while ((token = lexer.nextToken())!=null)
-            System.out.println(token);
+            System.out.println(token.type);
 
     }
 }
