@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8d84ec37-c4cc-4b45-81ec-0613c8f5a93d" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/soporte/Pila.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer$Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/soporte/Lexer$Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer$TokenType.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/soporte/Lexer$TokenType.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/soporte/Lexer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/soporte/Lexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/soporte/PseudoParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/soporte/PseudoParser.java" afterDir="false" />
-    </list>
+    <list default="true" id="8d84ec37-c4cc-4b45-81ec-0613c8f5a93d" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -51,7 +41,7 @@
       <file leaf-file-name="PseudoParser.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="292">
+            <state relative-caret-position="210">
               <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -248,7 +238,7 @@
       <workItem from="1527475074276" duration="12357000" />
       <workItem from="1527638755382" duration="5317000" />
       <workItem from="1527662732419" duration="9862000" />
-      <workItem from="1527701297290" duration="6890000" />
+      <workItem from="1527701297290" duration="7147000" />
     </task>
     <task id="LOCAL-00001" summary="Sintaxis libreria y paquete">
       <created>1527643130188</created>
@@ -275,7 +265,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38747000" />
+    <option name="totallyTimeSpent" value="39004000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -533,7 +523,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="292">
+        <state relative-caret-position="210">
           <caret line="127" lean-forward="true" selection-start-line="127" selection-end-line="127" />
           <folding>
             <element signature="imports" expanded="true" />
