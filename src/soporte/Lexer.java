@@ -12,7 +12,7 @@ public class Lexer {
         //No se puede usar el guion en el nombre
         NUMERO("[0-9]+"),
         BITVAL("'[0 1]'"),
-        TIPODATO("std_logic|STD_LOGIC"),
+        TIPODATO("std_logic|STD_LOGIC|bit|BIT"),
         LIBRARY("library|LIBRARY"),
         PAQUETE("ieee.std_logic_1164.all|IEEE.STD_LOGIC_1164.ALL"),
         NOMBREBIBLIOTECA("ieee|IEEE"),
@@ -20,8 +20,7 @@ public class Lexer {
         ENTITY("entity|ENTITY"),
         IS("is|IS"),
         PORT("port|PORT"),
-        TIPOPIN("in|IN|out|OUT"),
-        BITTYPE("bit|BIT"),
+        IOTYPE("in|IN|out|OUT"),
         END("end|END"),
         ARCHITECTURE("architecture|ARCHITECTURE"),
         OF("of|OF"),

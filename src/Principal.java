@@ -1,22 +1,19 @@
 import  soporte.*;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Principal {
     public static void main(String[] args) {
 
-        String datos = Archivo.leerArchivo("prueba.vhd");
-        ArrayList<String> listaTokens = new ArrayList<String>();
-        Lexer lexer = new Lexer("a : in std_logic");
-//        Lexer lexer = new Lexer(datos);
-
-        Lexer.Token token;
-        while ((token = lexer.nextToken())!=null) {
-            listaTokens.add(token.type.toString());
-            System.out.println(token);
-        }
-        PseudoParser parser = new PseudoParser(listaTokens);
-
-        System.out.println("Result: " + parser.pinCorrecto());
+        Scanner teclado = new Scanner(System.in);
+        String texto = teclado.nextLine();
+        Lexer lexer = new Lexer(texto);
+//        PseudoParser parser = new PseudoParser(Archivo.leerArchivo("prueba.vhd"));
+        PseudoParser parser = new PseudoParser(lexer);
+//        Lexer.Token t;
+//        while ((t=lexer.nextToken())!=null)
+//            System.out.println(t);
+        System.out.println("Result: " + parser.entidadCorrecta());
      }
 }
