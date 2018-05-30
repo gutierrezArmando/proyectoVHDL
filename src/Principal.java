@@ -9,6 +9,7 @@ public class Principal {
         ArrayList<String> listaTokens = new ArrayList<String>();
         Lexer lexer = new Lexer("a : in std_logic");
 //        Lexer lexer = new Lexer(datos);
+
         Lexer.Token token;
         while ((token = lexer.nextToken())!=null) {
             listaTokens.add(token.type.toString());
