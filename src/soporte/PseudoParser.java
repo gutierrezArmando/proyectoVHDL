@@ -50,6 +50,20 @@ public class PseudoParser {
         }
     }
 
+    public String pinCorrecto() {
+        if ( !match("VARIABLE", tokens.get(indice++)) )
+            return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(--indice);
+        if ( !match("DOSPUNTOS", tokens.get(indice++)) )
+            return "ERROR: Se esperaba: ':', recibido: " + tokens.get(--indice);
+        if ( !match("TIPOPIN", tokens.get(indice++)) )
+            return "ERROR: Se esperaba: 'TIPOPIN', recibido: " + tokens.get(--indice);
+        try {
+            return match("TIPODATO", tokens.get(indice++))?"PIN":"ERROR: Se esperaba: 'TIPODATO', recibido: " + tokens.get(indice);
+        } catch (Exception e) {
+            return "No Finalizo correctamente";
+        }
+    }
+
     private boolean match(String expresion, String valor) {
         Pattern patron = Pattern.compile(expresion);
         Matcher m = patron.matcher(valor);

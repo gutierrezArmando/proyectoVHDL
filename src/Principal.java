@@ -7,7 +7,7 @@ public class Principal {
 
         String datos = Archivo.leerArchivo("prueba.vhd");
         ArrayList<String> listaTokens = new ArrayList<String>();
-        Lexer lexer = new Lexer("use ieee.std_logic_1164.all;");
+        Lexer lexer = new Lexer("a : in std_logic");
 //        Lexer lexer = new Lexer(datos);
         Lexer.Token token;
         while ((token = lexer.nextToken())!=null) {
@@ -16,6 +16,6 @@ public class Principal {
         }
         PseudoParser parser = new PseudoParser(listaTokens);
 
-        System.out.println("Result: " + parser.paqueteCorrecto());
+        System.out.println("Result: " + parser.pinCorrecto());
      }
 }
