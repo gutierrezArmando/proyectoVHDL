@@ -23,12 +23,19 @@ public class PseudoParser {
         indice = 0;
     }
 
-    public ArrayList<Lexer.Token> getstrTokens() {
+    public ArrayList<Lexer.Token> getTokens() {
         return tokens;
     }
 
     public void setTokens(ArrayList<Lexer.Token> tokens) {
         this.tokens = tokens;
+    }
+
+    public String getStrTokens(){
+        String cadena="";
+        for( Lexer.Token strToken: tokens)
+            cadena += strToken.type.toString() + "\n";
+        return cadena;
     }
 
     private String libreriaCorrecta() {
@@ -92,7 +99,7 @@ public class PseudoParser {
         return "PUERTOS";
     }
 
-    public String entidadCorrecta(){
+    private String entidadCorrecta(){
 
         if ( !match("ENTITY", tokens.get(indice++).type.toString()) )
             return "ERROR: Se esperaba: 'ENTITY', recibido: " + tokens.get(--indice).data;
@@ -116,6 +123,62 @@ public class PseudoParser {
             return "No finalizo correctamente";
         }
         return "ENTIDAD";
+    }
+
+    private String comparacionCorrecta(){
+        if( !match("PARENTESISIZQ", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: '(', recibido: " + tokens.get(--indice).data;
+        if( !match("VARIABLE", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(--indice).data;
+        if( !match("IGUAL", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: IGUAL, recibido: " + tokens.get(--indice).data;
+        if( !match("PINVAL", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: PINVAL, recibido: " + tokens.get(--indice).data;
+        try {
+            if( !match("PARENTESISDER", tokens.get(indice++).type.toString()))
+                return "ERROR: Se esperaba: ')', recibido: " + tokens.get(--indice).data;
+        }catch (Exception e) {
+            return "No finalizo correctamente";
+        }
+        return  "COMPARACION";
+    }
+
+    private String asignacionCorrecta() {
+        if( !match("VARIABLE", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(--indice).data;
+        if( !match("ASIGNA", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: <=, recibido: " + tokens.get(--indice).data;
+        if( !match("PINVAL", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: PINVAL, recibido: " + tokens.get(--indice).data;
+        try {
+            if( !match("PUNTOYCOMA", tokens.get(indice++).type.toString()))
+                return "ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
+        }catch (Exception e) {
+            return "Error de Finalizacion en cadena";
+        }
+        return "ASIGNACION";
+    }
+
+    public String condicionSICorrecto(){
+        if( !match("IF", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: IF, recibido: " + tokens.get(--indice).data;
+        if(!match("COMPARACION", (msg=comparacionCorrecta())))
+            return msg;
+        if( !match("THEN", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: THEN, recibido: " + tokens.get(--indice).data;
+        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
+            return  msg;
+        if( !match("ELSE", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: ELSE, recibido: " + tokens.get(--indice).data;
+        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
+            return  msg;
+        if( !match("END", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: END, recibido: " + tokens.get(--indice).data;
+        if( !match("IF", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: IF, recibido: " + tokens.get(--indice).data;
+        if( !match("PUNTOYCOMA", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: ;, recibido: " + tokens.get(--indice).data;
+        return "SI";
     }
 
     private boolean match(String expresion, String valor) {

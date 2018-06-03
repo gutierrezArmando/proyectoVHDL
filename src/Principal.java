@@ -14,6 +14,7 @@ public class Principal {
 //        Lexer.Token t;
 //        while ((t=lexer.nextToken())!=null)
 //            System.out.println(t);
-        System.out.println("Result: " + parser.entidadCorrecta());
+//        System.out.println(parser.getStrTokens());
+        System.out.println("Result: " + parser.condicionSICorrecto());
      }
 }

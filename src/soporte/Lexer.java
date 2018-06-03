@@ -11,7 +11,7 @@ public class Lexer {
     public enum TokenType {
         //No se puede usar el guion en el nombre
         NUMERO("[0-9]+"),
-        BITVAL("'[0 1]'"),
+        PINVAL("'[0 1]'"),
         TIPODATO("std_logic|STD_LOGIC|bit|BIT"),
         LIBRARY("library|LIBRARY"),
         PAQUETE("ieee.std_logic_1164.all|IEEE.STD_LOGIC_1164.ALL"),
