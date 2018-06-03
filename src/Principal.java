@@ -15,6 +15,6 @@ public class Principal {
 //        while ((t=lexer.nextToken())!=null)
 //            System.out.println(t);
 //        System.out.println(parser.getStrTokens());
-        System.out.println("Result: " + parser.condicionSICorrecto());
+        System.out.println("Result: " + parser.parametrosCorrecto());
      }
 }

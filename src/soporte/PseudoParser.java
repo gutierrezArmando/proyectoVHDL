@@ -159,7 +159,7 @@ public class PseudoParser {
         return "ASIGNACION";
     }
 
-    public String condicionSICorrecto(){
+    private String condicionSICorrecto(){
         if( !match("IF", tokens.get(indice++).type.toString()))
             return "ERROR: Se esperaba: IF, recibido: " + tokens.get(--indice).data;
         if(!match("COMPARACION", (msg=comparacionCorrecta())))
@@ -179,6 +179,23 @@ public class PseudoParser {
         if( !match("PUNTOYCOMA", tokens.get(indice++).type.toString()))
             return "ERROR: Se esperaba: ;, recibido: " + tokens.get(--indice).data;
         return "SI";
+    }
+
+    public String parametrosCorrecto() {
+        if( !match("PARENTESISIZQ", tokens.get(indice++).type.toString()))
+            return "ERROR: Se esperaba: '(', recibido: " + tokens.get(--indice).data;
+        do {
+            if (!match("VARIABLE",tokens.get(indice++).type.toString()))
+                return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(--indice).data;
+        }while (match("COMA", tokens.get(indice++).type.toString()));
+        indice--;
+        try {
+            if( !match("PARENTESISDER", tokens.get(indice++).type.toString()))
+                return "ERROR: Se esperaba: ')', recibido: " + tokens.get(--indice).data;
+        }catch (Exception e) {
+            return "Fin de cadena incorrecto";
+        }
+        return "PARAMETROS";
     }
 
     private boolean match(String expresion, String valor) {
