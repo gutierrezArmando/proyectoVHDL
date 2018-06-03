@@ -39,38 +39,38 @@ public class PseudoParser {
     }
 
     private String libreriaCorrecta() {
-        if ( !match("LIBRARY", tokens.get(indice++).type.toString()) )
+        if ( !match("LIBRARY", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'LIBRARY', recibido: " + tokens.get(--indice).data;
-        if ( !match("NOMBREBIBLIOTECA", tokens.get(indice++).type.toString()) )
+        if ( !match("NOMBREBIBLIOTECA", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'NOMBREBIBLIOTECA', recibido: " + tokens.get(--indice).data;
         try {
-            return match("PUNTOYCOMA", tokens.get(indice++).type.toString())?"LIBRERIA":"ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
+            return match("PUNTOYCOMA", nextStrTokenType())?"LIBRERIA":"ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
         } catch (Exception e) {
             return "No Finalizo correctamente";
         }
     }
 
     private String paqueteCorrecto() {
-        if ( !match("USE", tokens.get(indice++).type.toString()) )
+        if ( !match("USE", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'USE', recibido: " + tokens.get(--indice).data;
-        if ( !match("PAQUETE", tokens.get(indice++).type.toString()) )
+        if ( !match("PAQUETE", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'NOMBREBIBLIOTECA', recibido: " + tokens.get(--indice).data;
         try {
-            return match("PUNTOYCOMA", tokens.get(indice++).type.toString())?"PAQUETE":"ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
+            return match("PUNTOYCOMA", nextStrTokenType())?"PAQUETE":"ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
         } catch (Exception e) {
             return "No Finalizo correctamente";
         }
     }
 
     private String pinCorrecto() {
-        if ( !match("VARIABLE", tokens.get(indice++).type.toString()) )
+        if ( !match("VARIABLE", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(--indice).data;
-        if ( !match("DOSPUNTOS", tokens.get(indice++).type.toString()) )
+        if ( !match("DOSPUNTOS", nextStrTokenType()) )
             return "ERROR: Se esperaba: ':', recibido: " + tokens.get(--indice).data;
-        if ( !match("IOTYPE", tokens.get(indice++).type.toString()) )
+        if ( !match("IOTYPE", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'IOTYPE', recibido: " + tokens.get(--indice).data;
         try {
-            return match("TIPODATO", tokens.get(indice++).type.toString())?"PIN":"ERROR: Se esperaba: 'TIPODATO', recibido: " + tokens.get(--indice).data;
+            return match("TIPODATO", nextStrTokenType())?"PIN":"ERROR: Se esperaba: 'TIPODATO', recibido: " + tokens.get(--indice).data;
         } catch (Exception e) {
             return "No Finalizo correctamente";
         }
@@ -78,20 +78,20 @@ public class PseudoParser {
 
     private String puertosCorrecto() {
 //        String msg;
-        if ( !match("PORT", tokens.get(indice++).type.toString()) )
+        if ( !match("PORT", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'PORT', recibido: " + tokens.get(--indice).data;
-        if ( !match("PARENTESISIZQ", tokens.get(indice++).type.toString()) )
+        if ( !match("PARENTESISIZQ", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'PARENTESISIZQ', recibido: " + tokens.get(--indice).data;
         do {
             if (!match("PIN",(msg = pinCorrecto()))) {
                 return msg;
             }
-        }while (match("PUNTOYCOMA", tokens.get(indice++).type.toString()));
+        }while (match("PUNTOYCOMA", nextStrTokenType()));
         indice--;
-        if ( !match("PARENTESISDER", tokens.get(indice++).type.toString()) )
+        if ( !match("PARENTESISDER", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'PARENTESISDER', recibido: " + tokens.get(--indice).data;
         try {
-            if ( !match("PUNTOYCOMA", tokens.get(indice++).type.toString()) )
+            if ( !match("PUNTOYCOMA", nextStrTokenType()) )
                 return "ERROR: Se esperaba: 'PUNTOYCOMA', recibido: " + tokens.get(--indice).data;
         }catch (Exception e) {
             return "No Finalizo correctamente";
@@ -101,23 +101,23 @@ public class PseudoParser {
 
     private String entidadCorrecta(){
 
-        if ( !match("ENTITY", tokens.get(indice++).type.toString()) )
+        if ( !match("ENTITY", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'ENTITY', recibido: " + tokens.get(--indice).data;
         if ( !match("VARIABLE", tokens.get(indice).type.toString()) )
             return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(indice).data;
         nombreEntidad = tokens.get(indice++).data;
-        if ( !match("IS", tokens.get(indice++).type.toString()) )
+        if ( !match("IS", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'IS', recibido: " + tokens.get(--indice).data;
         if ( !match("PUERTOS", (msg = puertosCorrecto())))
             return  msg;
-        if ( !match("END", tokens.get(indice++).type.toString()) )
+        if ( !match("END", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'END', recibido: " + tokens.get(--indice).data;
         if ( !match("VARIABLE", tokens.get(indice).type.toString()) )
             return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(indice).data;
         if( !match(nombreEntidad, tokens.get(indice++).data))
             return "ERROR: Se esperaba: " + nombreEntidad + ", recibido: " + tokens.get(--indice).data;
         try {
-            if ( !match("PUNTOYCOMA", tokens.get(indice++).type.toString()) )
+            if ( !match("PUNTOYCOMA", nextStrTokenType()) )
                 return "ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
         } catch (Exception e) {
             return "No finalizo correctamente";
@@ -126,16 +126,16 @@ public class PseudoParser {
     }
 
     private String comparacionCorrecta(){
-        if( !match("PARENTESISIZQ", tokens.get(indice++).type.toString()))
+        if( !match("PARENTESISIZQ", nextStrTokenType()))
             return "ERROR: Se esperaba: '(', recibido: " + tokens.get(--indice).data;
-        if( !match("VARIABLE", tokens.get(indice++).type.toString()))
+        if( !match("VARIABLE", nextStrTokenType()))
             return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(--indice).data;
-        if( !match("IGUAL", tokens.get(indice++).type.toString()))
+        if( !match("IGUAL", nextStrTokenType()))
             return "ERROR: Se esperaba: IGUAL, recibido: " + tokens.get(--indice).data;
-        if( !match("PINVAL", tokens.get(indice++).type.toString()))
+        if( !match("PINVAL", nextStrTokenType()))
             return "ERROR: Se esperaba: PINVAL, recibido: " + tokens.get(--indice).data;
         try {
-            if( !match("PARENTESISDER", tokens.get(indice++).type.toString()))
+            if( !match("PARENTESISDER", nextStrTokenType()))
                 return "ERROR: Se esperaba: ')', recibido: " + tokens.get(--indice).data;
         }catch (Exception e) {
             return "No finalizo correctamente";
@@ -144,14 +144,14 @@ public class PseudoParser {
     }
 
     private String asignacionCorrecta() {
-        if( !match("VARIABLE", tokens.get(indice++).type.toString()))
+        if( !match("VARIABLE", nextStrTokenType()))
             return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(--indice).data;
-        if( !match("ASIGNA", tokens.get(indice++).type.toString()))
+        if( !match("ASIGNA", nextStrTokenType()))
             return "ERROR: Se esperaba: <=, recibido: " + tokens.get(--indice).data;
-        if( !match("PINVAL", tokens.get(indice++).type.toString()))
+        if( !match("PINVAL", nextStrTokenType()))
             return "ERROR: Se esperaba: PINVAL, recibido: " + tokens.get(--indice).data;
         try {
-            if( !match("PUNTOYCOMA", tokens.get(indice++).type.toString()))
+            if( !match("PUNTOYCOMA", nextStrTokenType()))
                 return "ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
         }catch (Exception e) {
             return "Error de Finalizacion en cadena";
@@ -160,43 +160,94 @@ public class PseudoParser {
     }
 
     private String condicionSICorrecto(){
-        if( !match("IF", tokens.get(indice++).type.toString()))
+        if( !match("IF", nextStrTokenType()))
             return "ERROR: Se esperaba: IF, recibido: " + tokens.get(--indice).data;
         if(!match("COMPARACION", (msg=comparacionCorrecta())))
             return msg;
-        if( !match("THEN", tokens.get(indice++).type.toString()))
+        if( !match("THEN", nextStrTokenType()))
             return "ERROR: Se esperaba: THEN, recibido: " + tokens.get(--indice).data;
-        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
-            return  msg;
-        if( !match("ELSE", tokens.get(indice++).type.toString()))
+//        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
+//            return  msg;
+        if (!match("ENUNCIADO", (msg = enunciadoCorrecto())))
+            return msg;
+
+        if( !match("ELSE", nextStrTokenType()))
             return "ERROR: Se esperaba: ELSE, recibido: " + tokens.get(--indice).data;
-        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
-            return  msg;
-        if( !match("END", tokens.get(indice++).type.toString()))
+//        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
+//            return  msg;
+        if (!match("ENUNCIADO", (msg = enunciadoCorrecto())))
+            return msg;
+
+        if( !match("END", nextStrTokenType()))
             return "ERROR: Se esperaba: END, recibido: " + tokens.get(--indice).data;
-        if( !match("IF", tokens.get(indice++).type.toString()))
+        if( !match("IF", nextStrTokenType()))
             return "ERROR: Se esperaba: IF, recibido: " + tokens.get(--indice).data;
-        if( !match("PUNTOYCOMA", tokens.get(indice++).type.toString()))
+        if( !match("PUNTOYCOMA", nextStrTokenType()))
             return "ERROR: Se esperaba: ;, recibido: " + tokens.get(--indice).data;
         return "SI";
     }
 
-    public String parametrosCorrecto() {
-        if( !match("PARENTESISIZQ", tokens.get(indice++).type.toString()))
+    private String parametrosCorrecto() {
+        if( !match("PARENTESISIZQ", nextStrTokenType()))
             return "ERROR: Se esperaba: '(', recibido: " + tokens.get(--indice).data;
         do {
-            if (!match("VARIABLE",tokens.get(indice++).type.toString()))
+            if (!match("VARIABLE",nextStrTokenType()))
                 return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(--indice).data;
-        }while (match("COMA", tokens.get(indice++).type.toString()));
+        }while (match("COMA", nextStrTokenType()));
         indice--;
         try {
-            if( !match("PARENTESISDER", tokens.get(indice++).type.toString()))
+            if( !match("PARENTESISDER", nextStrTokenType()))
                 return "ERROR: Se esperaba: ')', recibido: " + tokens.get(--indice).data;
         }catch (Exception e) {
             return "Fin de cadena incorrecto";
         }
         return "PARAMETROS";
     }
+
+    private String enunciadoCorrecto() {
+        switch (tokens.get(indice).type.toString())
+        {
+            case "IF" :
+            {
+                if(!match("SI", (msg = condicionSICorrecto())))
+                    return msg;
+            }break;
+            case "VARIABLE" :
+            {
+                if(!match("ASIGNACION", (msg = asignacionCorrecta())))
+                    return msg;
+            }break;
+        }
+        return "ENUNCIADO";
+    }
+
+    public String procesoCorrecto() {
+        if( !match("PROCESS", nextStrTokenType()))
+            return "ERROR: Se esperaba: 'PROCESS', recibido: " + tokens.get(--indice).data;
+        if(!match("PARAMETROS",(msg = parametrosCorrecto())))
+            return msg;
+        if( !match("BEGIN", nextStrTokenType()))
+            return "ERROR: Se esperaba: 'BEGIN', recibido: " + tokens.get(--indice).data;
+        if(!match("ENUNCIADO",(msg = enunciadoCorrecto())))
+            return msg;
+        if( !match("END", nextStrTokenType()))
+            return "ERROR: Se esperaba: END, recibido: " + tokens.get(--indice).data;
+        if( !match("PROCESS", nextStrTokenType()))
+            return "ERROR: Se esperaba: PROCESS, recibido: " + tokens.get(--indice).data;
+        try {
+            if( !match("PUNTOYCOMA", nextStrTokenType()))
+                return "ERROR: Se esperaba: ;, recibido: " + tokens.get(--indice).data;
+        }catch (Exception e){
+            return "Fin de sentencia incorrecto";
+        }
+        return "PROCESO";
+    }
+
+    private String nextStrTokenType() {
+        return tokens.get(indice++).type.toString();
+    }
+
+
 
     private boolean match(String expresion, String valor) {
         Pattern patron = Pattern.compile(expresion);
