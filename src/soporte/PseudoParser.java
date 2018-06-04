@@ -10,6 +10,7 @@ public class PseudoParser {
     private Lexer.Token token;
     private int indice;
     private String nombreEntidad;
+    private String nombreArquitectura;
     private String msg;
 
     public PseudoParser() {
@@ -21,6 +22,7 @@ public class PseudoParser {
         while ((token = lexer.nextToken())!=null)
             tokens.add(token);
         indice = 0;
+        nombreEntidad = "entidad";
     }
 
     public ArrayList<Lexer.Token> getTokens() {
@@ -221,7 +223,7 @@ public class PseudoParser {
         return "ENUNCIADO";
     }
 
-    public String procesoCorrecto() {
+    private String procesoCorrecto() {
         if( !match("PROCESS", nextStrTokenType()))
             return "ERROR: Se esperaba: 'PROCESS', recibido: " + tokens.get(--indice).data;
         if(!match("PARAMETROS",(msg = parametrosCorrecto())))
@@ -241,6 +243,37 @@ public class PseudoParser {
             return "Fin de sentencia incorrecto";
         }
         return "PROCESO";
+    }
+
+    public String arquitecturaCorrecto() {
+        if( !match("ARCHITECTURE", nextStrTokenType()))
+            return "ERROR: Se esperaba: ARCHITECTURE, recibido: " + tokens.get(--indice).data;
+        if( !match("VARIABLE", tokens.get(indice).type.toString()))
+            return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(indice).data;
+        nombreArquitectura = tokens.get(indice++).data;
+        if( !match("OF", nextStrTokenType()))
+            return "ERROR: Se esperaba: OF, recibido: " + tokens.get(--indice).data;
+        if( !match("VARIABLE", tokens.get(indice).type.toString()))
+            return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(indice).data;
+        if(!match(nombreEntidad, tokens.get(indice++).data))
+            return "Entidad no correspondiente, se esperaba: " + nombreEntidad + " recibido: " + tokens.get(--indice).data;
+        if( !match("IS", nextStrTokenType()))
+            return "ERROR: Se esperaba: IS, recibido: " + tokens.get(--indice).data;
+        if( !match("BEGIN", nextStrTokenType()))
+            return "ERROR: Se esperaba: BEGIN, recibido: " + tokens.get(--indice).data;
+        if(!match("PROCESO",(msg = procesoCorrecto())))
+            return msg;
+        if( !match("END", nextStrTokenType()))
+            return "ERROR: Se esperaba: END, recibido: " + tokens.get(--indice).data;
+        if(!match(nombreArquitectura, tokens.get(indice++).data))
+            return "Se esperaba: " + nombreArquitectura + ", Recibido: " + tokens.get(--indice).data;
+        try {
+            if( !match("PUNTOYCOMA", nextStrTokenType()))
+                return "ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
+        }catch (Exception e) {
+            return "Fin de cadena incorrecto";
+        }
+        return "ARQUITECTURA";
     }
 
     private String nextStrTokenType() {
