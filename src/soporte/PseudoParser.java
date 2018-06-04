@@ -245,7 +245,7 @@ public class PseudoParser {
         return "PROCESO";
     }
 
-    public String arquitecturaCorrecto() {
+    private String arquitecturaCorrecto() {
         if( !match("ARCHITECTURE", nextStrTokenType()))
             return "ERROR: Se esperaba: ARCHITECTURE, recibido: " + tokens.get(--indice).data;
         if( !match("VARIABLE", tokens.get(indice).type.toString()))
@@ -276,11 +276,21 @@ public class PseudoParser {
         return "ARQUITECTURA";
     }
 
+    public String programaCorrecto() {
+        if(!match("LIBRERIA", (msg = libreriaCorrecta())))
+            return msg;
+        if(!match("PAQUETE", (msg = paqueteCorrecto())))
+            return msg;
+        if(!match("ENTIDAD", (msg = entidadCorrecta())))
+            return msg;
+        if(!match("ARQUITECTURA", (msg = arquitecturaCorrecto())))
+            return msg;
+        return "PROGRAMA";
+    }
+
     private String nextStrTokenType() {
         return tokens.get(indice++).type.toString();
     }
-
-
 
     private boolean match(String expresion, String valor) {
         Pattern patron = Pattern.compile(expresion);
