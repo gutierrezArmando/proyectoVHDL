@@ -2,10 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8d84ec37-c4cc-4b45-81ec-0613c8f5a93d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/src/soporte/Simbolo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/soporte/TablaSimbolos.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal.class" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Principal.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Principal.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/prueba.vhd" beforeDir="false" afterPath="$PROJECT_DIR$/src/prueba.vhd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/soporte/PseudoParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/soporte/PseudoParser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/Archivo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/Archivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/analizadores/Archivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer$Token.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer$TokenType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/Lexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/analizadores/Lexer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/Pila.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/analizadores/Pila.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/soporte/PseudoParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/analizadores/PseudoParser.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +44,61 @@
       <file leaf-file-name="Principal.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Principal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="18" selection-start-column="18" selection-end-column="18" />
+            <state relative-caret-position="187">
+              <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Simbolo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/soporte/Simbolo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+              <folding>
+                <element signature="e#766#767#0" expanded="true" />
+                <element signature="e#795#796#0" expanded="true" />
+                <element signature="e#839#840#0" expanded="true" />
+                <element signature="e#875#876#0" expanded="true" />
+                <element signature="e#907#908#0" expanded="true" />
+                <element signature="e#935#936#0" expanded="true" />
+                <element signature="e#977#978#0" expanded="true" />
+                <element signature="e#1011#1012#0" expanded="true" />
+                <element signature="e#1045#1046#0" expanded="true" />
+                <element signature="e#1075#1076#0" expanded="true" />
+                <element signature="e#1121#1122#0" expanded="true" />
+                <element signature="e#1159#1160#0" expanded="true" />
+                <element signature="e#1195#1196#0" expanded="true" />
+                <element signature="e#1227#1228#0" expanded="true" />
+                <element signature="e#1277#1278#0" expanded="true" />
+                <element signature="e#1319#1320#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TablaSimbolos.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/soporte/TablaSimbolos.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="307">
+              <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+              <folding>
+                <element signature="e#138#139#0" expanded="true" />
+                <element signature="e#176#177#0" expanded="true" />
+                <element signature="e#177#178#0" expanded="true" />
+                <element signature="e#205#206#0" expanded="true" />
+                <element signature="e#265#266#0" expanded="true" />
+                <element signature="e#299#300#0" expanded="true" />
+                <element signature="e#404#405#0" expanded="true" />
+                <element signature="e#424#425#0" expanded="true" />
+                <element signature="e#488#489#0" expanded="true" />
+                <element signature="e#536#537#0" expanded="true" />
+                <element signature="e#574#575#0" expanded="true" />
+                <element signature="e#598#599#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -74,8 +137,10 @@
         <option value="$PROJECT_DIR$/src/soporte/Parser.java" />
         <option value="$PROJECT_DIR$/src/soporte/Pila.java" />
         <option value="$PROJECT_DIR$/src/soporte/Lexer.java" />
-        <option value="$PROJECT_DIR$/src/soporte/PseudoParser.java" />
         <option value="$PROJECT_DIR$/src/prueba.vhd" />
+        <option value="$PROJECT_DIR$/src/soporte/PseudoParser.java" />
+        <option value="$PROJECT_DIR$/src/soporte/Simbolo.java" />
+        <option value="$PROJECT_DIR$/src/soporte/TablaSimbolos.java" />
         <option value="$PROJECT_DIR$/src/Principal.java" />
       </list>
     </option>
@@ -214,7 +279,7 @@
       <workItem from="1527719490499" duration="192000" />
       <workItem from="1528055272719" duration="620000" />
       <workItem from="1528055926989" duration="56000" />
-      <workItem from="1528056010768" duration="12738000" />
+      <workItem from="1528056010768" duration="23504000" />
     </task>
     <task id="LOCAL-00001" summary="Sintaxis libreria y paquete">
       <created>1527643130188</created>
@@ -241,7 +306,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55120000" />
+    <option name="totallyTimeSpent" value="65886000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -254,7 +319,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32838285" />
@@ -266,7 +330,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49848714" weight="0.32838285" />
       <window_info anchor="bottom" id="Run" order="2" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.28382838" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3019802" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28971255" />
@@ -329,10 +393,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
@@ -349,14 +416,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -365,10 +430,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
@@ -385,14 +453,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
           <caret line="21" column="5" selection-start-line="21" selection-start-column="5" selection-end-line="21" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -401,10 +467,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
@@ -421,14 +490,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2125">
           <caret line="125" column="5" lean-forward="true" selection-start-line="125" selection-start-column="5" selection-end-line="125" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -437,10 +504,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
@@ -457,14 +527,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1870">
           <caret line="118" column="5" selection-start-line="118" selection-start-column="5" selection-end-line="118" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -473,10 +541,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="16" column="64" selection-start-line="16" selection-start-column="64" selection-end-line="16" selection-end-column="64" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="646">
           <caret line="40" column="38" selection-start-line="40" selection-start-column="38" selection-end-line="40" selection-end-column="38" />
@@ -493,14 +564,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2006">
           <caret line="126" column="1" selection-start-line="126" selection-start-column="1" selection-end-line="126" selection-end-column="1" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -509,22 +578,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="13" column="22" lean-forward="true" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1275">
           <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="51">
           <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
@@ -545,10 +615,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
           <caret line="14" column="29" lean-forward="true" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="29" />
@@ -565,14 +638,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1105">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -581,6 +652,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="41" selection-start-line="9" selection-start-column="41" selection-end-line="9" selection-end-column="41" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -598,7 +672,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -614,7 +688,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
           <caret line="26" column="18" selection-start-line="26" selection-start-column="18" selection-end-line="26" selection-end-column="18" />
@@ -624,21 +698,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Archivo.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Archivo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.class">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Pila.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Pila.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="332">
           <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
@@ -647,37 +721,84 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/prueba.vhd">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="35" lean-forward="true" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+        <state relative-caret-position="102">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/Lexer.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/Lexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="27" column="32" selection-start-line="27" selection-start-column="32" selection-end-line="27" selection-end-column="32" />
+        <state relative-caret-position="323">
+          <caret line="31" column="16" lean-forward="true" selection-start-line="31" selection-start-column="16" selection-end-line="31" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/soporte/PseudoParser.java">
+    <entry file="file://$PROJECT_DIR$/src/analizadores/PseudoParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="278" column="34" selection-start-line="278" selection-start-column="34" selection-end-line="278" selection-end-column="34" />
+        <state relative-caret-position="341">
+          <caret line="167" column="21" lean-forward="true" selection-start-line="167" selection-start-column="21" selection-end-line="167" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#9333#9334#0" expanded="true" />
-            <element signature="e#9374#9375#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/soporte/Simbolo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="5" selection-end-line="55" selection-end-column="5" />
+          <folding>
+            <element signature="e#766#767#0" expanded="true" />
+            <element signature="e#795#796#0" expanded="true" />
+            <element signature="e#839#840#0" expanded="true" />
+            <element signature="e#875#876#0" expanded="true" />
+            <element signature="e#907#908#0" expanded="true" />
+            <element signature="e#935#936#0" expanded="true" />
+            <element signature="e#977#978#0" expanded="true" />
+            <element signature="e#1011#1012#0" expanded="true" />
+            <element signature="e#1045#1046#0" expanded="true" />
+            <element signature="e#1075#1076#0" expanded="true" />
+            <element signature="e#1121#1122#0" expanded="true" />
+            <element signature="e#1159#1160#0" expanded="true" />
+            <element signature="e#1195#1196#0" expanded="true" />
+            <element signature="e#1227#1228#0" expanded="true" />
+            <element signature="e#1277#1278#0" expanded="true" />
+            <element signature="e#1319#1320#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/soporte/TablaSimbolos.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+          <folding>
+            <element signature="e#138#139#0" expanded="true" />
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#177#178#0" expanded="true" />
+            <element signature="e#205#206#0" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="e#299#300#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#488#489#0" expanded="true" />
+            <element signature="e#536#537#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#598#599#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Principal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="18" selection-start-column="18" selection-end-column="18" />
+        <state relative-caret-position="187">
+          <caret line="11" column="51" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

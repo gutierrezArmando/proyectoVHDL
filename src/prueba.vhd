@@ -12,7 +12,7 @@ end com_or;
 architecture funcional of com_or is
 begin
 	process ( a, b ) begin
-	  if ( a = '0' ) then
+	  if ( a = '0' and b = '0') then
 	  	f1 <= '0' ;
 	  else
 	  	f1 <= '1' ;

@@ -1,4 +1,4 @@
-package soporte;
+package analizadores;
 
 import java.io.*;
 

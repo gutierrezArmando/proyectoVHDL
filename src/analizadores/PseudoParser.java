@@ -1,4 +1,4 @@
-package soporte;
+package analizadores;
 
 import java.util.ArrayList;
 import java.util.regex.Matcher;
@@ -130,12 +130,15 @@ public class PseudoParser {
     private String comparacionCorrecta(){
         if( !match("PARENTESISIZQ", nextStrTokenType()))
             return "ERROR: Se esperaba: '(', recibido: " + tokens.get(--indice).data;
-        if( !match("VARIABLE", nextStrTokenType()))
-            return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(--indice).data;
-        if( !match("IGUAL", nextStrTokenType()))
-            return "ERROR: Se esperaba: IGUAL, recibido: " + tokens.get(--indice).data;
-        if( !match("PINVAL", nextStrTokenType()))
-            return "ERROR: Se esperaba: PINVAL, recibido: " + tokens.get(--indice).data;
+        do {
+            if( !match("VARIABLE", nextStrTokenType()))
+                return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(--indice).data;
+            if( !match("IGUAL", nextStrTokenType()))
+                return "ERROR: Se esperaba: IGUAL, recibido: " + tokens.get(--indice).data;
+            if( !match("PINVAL", nextStrTokenType()))
+                return "ERROR: Se esperaba: PINVAL, recibido: " + tokens.get(--indice).data;
+        }while (match("OPLOGICO", nextStrTokenType()));
+        indice--;
         try {
             if( !match("PARENTESISDER", nextStrTokenType()))
                 return "ERROR: Se esperaba: ')', recibido: " + tokens.get(--indice).data;
