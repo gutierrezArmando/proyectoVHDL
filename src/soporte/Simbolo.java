@@ -6,6 +6,10 @@ public class Simbolo {
     private String tipo_es;
     private String tipo_dato;
 
+    public Simbolo() {
+        this("","","","");
+    }
+
     public Simbolo(String nombre, String clase) {
         this.setNombre(nombre);
         this.setClase(clase);
@@ -54,6 +58,8 @@ public class Simbolo {
 
     @Override
     public String toString(){
+        if ( tipo_es.equals("") && tipo_dato.equals(""))
+            return String.format("Nombre: %s\tClase: %s", nombre, clase);
         return String.format("Nombre: %s\tClase: %s\tTipo_es: %s\tTipo_dato: %s", nombre, clase, tipo_es, tipo_dato);
     }
 }

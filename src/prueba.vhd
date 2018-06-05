@@ -5,7 +5,7 @@ entity com_or is
 	port (
 		a : in std_logic;
 		b : in std_logic;
-		f1: out std_logic
+		c : out std_logic
 	);
 end com_or;
 
@@ -13,9 +13,9 @@ architecture funcional of com_or is
 begin
 	process ( a, b ) begin
 	  if ( a = '0' and b = '0') then
-	  	f1 <= '0' ;
+	  	c <= '0' ;
 	  else
-	  	f1 <= '1' ;
+	  	c <= '1' ;
 	  end if ;
 	end process ;
 end funcional ;

@@ -3,6 +3,7 @@ package analizadores;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import soporte.*;
 
 public class PseudoParser2 {
 
@@ -12,6 +13,7 @@ public class PseudoParser2 {
     private String nombreEntidad;
     private String nombreArquitectura;
     private String msg;
+    private TablaSimbolos tabla;
 
     public PseudoParser2() {
         this(null);
@@ -20,10 +22,28 @@ public class PseudoParser2 {
     /** Constructor */
     public PseudoParser2(Lexer lexer) {
         tokens = new ArrayList<Lexer.Token>();
+        indice = 0;
         while ((token = lexer.nextToken())!=null)
             tokens.add(token);
-        indice = 0;
         nombreEntidad = "entidad";
+        inicalizarTablaSimbolos();
+    }
+
+    private void inicalizarTablaSimbolos(){
+        tabla = new TablaSimbolos();
+        tabla.addPalabraReservada("library");
+        tabla.addPalabraReservada("use");
+        tabla.addPalabraReservada("entity");
+        tabla.addPalabraReservada("port");
+        tabla.addPalabraReservada("is");
+        tabla.addPalabraReservada("end");
+        tabla.addPalabraReservada("architecture");
+        tabla.addPalabraReservada("of");
+        tabla.addPalabraReservada("begin");
+        tabla.addPalabraReservada("process");
+        tabla.addPalabraReservada("if");
+        tabla.addPalabraReservada("then");
+        tabla.addPalabraReservada("else");
     }
 
     /**Devuelve en forma de cadena todos los token*/
@@ -60,29 +80,37 @@ public class PseudoParser2 {
     }
 
     private String pinCorrecto() {
+        Simbolo simbolo = new Simbolo();
         if ( !match("VARIABLE", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(--indice).data;
+        if (tabla.exist(tokens.get(indice-1).data.toUpperCase()))
+            return "ERROR: pin '"+tokens.get(--indice).data+"' ya existente";
+        simbolo.setNombre(tokens.get(indice-1).data);
+        simbolo.setClase("PIN");
         if ( !match("DOSPUNTOS", nextStrTokenType()) )
             return "ERROR: Se esperaba: ':', recibido: " + tokens.get(--indice).data;
         if ( !match("IOTYPE", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'IOTYPE', recibido: " + tokens.get(--indice).data;
+        simbolo.setTipo_es(tokens.get(indice-1).data.toUpperCase());
         try {
-            return match("TIPODATO", nextStrTokenType())?"PIN":"ERROR: Se esperaba: 'TIPODATO', recibido: " + tokens.get(--indice).data;
+            if(!match("TIPODATO", nextStrTokenType()))
+                return "ERROR: Se esperaba: 'TIPODATO', recibido: " + tokens.get(--indice).data;
+            simbolo.setTipo_dato(tokens.get(indice-1).data.toUpperCase());
         } catch (Exception e) {
             return "No Finalizo correctamente";
         }
+        tabla.put(simbolo.getNombre(), simbolo);
+        return "PIN";
     }
 
     private String puertosCorrecto() {
-//        String msg;
         if ( !match("PORT", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'PORT', recibido: " + tokens.get(--indice).data;
         if ( !match("PARENTESISIZQ", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'PARENTESISIZQ', recibido: " + tokens.get(--indice).data;
         do {
-            if (!match("PIN",(msg = pinCorrecto()))) {
+            if (!match("PIN",(msg = pinCorrecto())))
                 return msg;
-            }
         }while (match("PUNTOYCOMA", nextStrTokenType()));
         indice--;
         if ( !match("PARENTESISDER", nextStrTokenType()) )
@@ -97,11 +125,15 @@ public class PseudoParser2 {
     }
 
     private String entidadCorrecta(){
-
         if ( !match("ENTITY", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'ENTITY', recibido: " + tokens.get(--indice).data;
         if ( !match("VARIABLE", tokens.get(indice).type.toString()) )
             return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(indice).data;
+
+        if(tabla.exist(tokens.get(indice).data))
+            return "ERROR: " + tokens.get(indice).data + " es " + tabla.get(tokens.get(indice).data).getClase();
+        tabla.addEntidad(tokens.get(indice).data);
+
         nombreEntidad = tokens.get(indice++).data;
         if ( !match("IS", nextStrTokenType()) )
             return "ERROR: Se esperaba: 'IS', recibido: " + tokens.get(--indice).data;
@@ -111,8 +143,12 @@ public class PseudoParser2 {
             return "ERROR: Se esperaba: 'END', recibido: " + tokens.get(--indice).data;
         if ( !match("VARIABLE", tokens.get(indice).type.toString()) )
             return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(indice).data;
-        if( !match(nombreEntidad, tokens.get(indice++).data))
-            return "ERROR: Se esperaba: " + nombreEntidad + ", recibido: " + tokens.get(--indice).data;
+
+        if(!tabla.exist(tokens.get(indice).data))
+            return "ERROR: No se encontro la entidad " + tokens.get(indice).data;
+
+        if(!tabla.get(tokens.get(indice++).data).getClase().equals("entity"))
+            return "ERROR: " + tokens.get(--indice).data + " no es entidad";
         try {
             if ( !match("PUNTOYCOMA", nextStrTokenType()) )
                 return "ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
@@ -166,15 +202,11 @@ public class PseudoParser2 {
             return msg;
         if( !match("THEN", nextStrTokenType()))
             return "ERROR: Se esperaba: THEN, recibido: " + tokens.get(--indice).data;
-//        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
-//            return  msg;
         if (!match("ENUNCIADO", (msg = enunciadoCorrecto())))
             return msg;
 
         if( !match("ELSE", nextStrTokenType()))
             return "ERROR: Se esperaba: ELSE, recibido: " + tokens.get(--indice).data;
-//        if(!match("ASIGNACION", (msg=asignacionCorrecta())))
-//            return  msg;
         if (!match("ENUNCIADO", (msg = enunciadoCorrecto())))
             return msg;
 
@@ -193,6 +225,10 @@ public class PseudoParser2 {
         do {
             if (!match("VARIABLE",nextStrTokenType()))
                 return "ERROR: Se esperaba: 'VARIABLE', recibido: " + tokens.get(--indice).data;
+            if(!tabla.exist(tokens.get(indice-1).data))
+                return "Error: PIN '" + tokens.get(--indice).data + "' no declarado";
+            if( !tabla.get(tokens.get(indice-1).data).getClase().equals("PIN"))
+                return "Error: " + tokens.get(indice-1).data + " definido como: " + tabla.get(tokens.get(indice-1).data).getClase();
         }while (match("COMA", nextStrTokenType()));
         indice--;
         try {
@@ -214,6 +250,12 @@ public class PseudoParser2 {
             }break;
             case "VARIABLE" :
             {
+                if(!tabla.exist(tokens.get(indice).data))
+                    return "Error: PIN '" + tokens.get(indice).data + "' no declarado";
+                if( !tabla.get(tokens.get(indice).data).getClase().equals("PIN"))
+                    return "Error: " + tokens.get(indice).data + " definido como: " + tabla.get(tokens.get(indice-1).data).getClase();
+                if(!tabla.get(tokens.get(indice).data).getTipo_es().equals("OUT"))
+                    return "Error: No puede asignarse un valor  al PIN '"+tokens.get(indice).data+"' tipo 'IN'";
                 if(!match("ASIGNACION", (msg = asignacionCorrecta())))
                     return msg;
             }break;
@@ -248,13 +290,22 @@ public class PseudoParser2 {
             return "ERROR: Se esperaba: ARCHITECTURE, recibido: " + tokens.get(--indice).data;
         if( !match("VARIABLE", tokens.get(indice).type.toString()))
             return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(indice).data;
-        nombreArquitectura = tokens.get(indice++).data;
+
+        if (tabla.exist(tokens.get(indice).data))
+            return "ERROR: Duplicado\n" + tabla.get(tokens.get(indice).data);
+
+        tabla.addArquitectura(tokens.get(indice++).data);
+
         if( !match("OF", nextStrTokenType()))
             return "ERROR: Se esperaba: OF, recibido: " + tokens.get(--indice).data;
         if( !match("VARIABLE", tokens.get(indice).type.toString()))
             return "ERROR: Se esperaba: VARIABLE, recibido: " + tokens.get(indice).data;
-        if(!match(nombreEntidad, tokens.get(indice++).data))
-            return "Entidad no correspondiente, se esperaba: " + nombreEntidad + " recibido: " + tokens.get(--indice).data;
+
+        if(!tabla.exist(tokens.get(indice).data))
+            return "Error: entity '" + tokens.get(indice).data + "' no fue localizado";
+        if(!tabla.get(tokens.get(indice++).data).getClase().equals("entity"))
+            return "Error: " + tabla.get(tokens.get(--indice).data);
+
         if( !match("IS", nextStrTokenType()))
             return "ERROR: Se esperaba: IS, recibido: " + tokens.get(--indice).data;
         if( !match("BEGIN", nextStrTokenType()))
@@ -263,8 +314,10 @@ public class PseudoParser2 {
             return msg;
         if( !match("END", nextStrTokenType()))
             return "ERROR: Se esperaba: END, recibido: " + tokens.get(--indice).data;
-        if(!match(nombreArquitectura, tokens.get(indice++).data))
-            return "Se esperaba: " + nombreArquitectura + ", Recibido: " + tokens.get(--indice).data;
+        if(!tabla.exist(tokens.get(indice).data))
+            return "Clase architect '" + tokens.get(indice).data + "' no iniciado";
+        if(!tabla.get(tokens.get(indice++).data).getClase().equals("architecture"))
+            return "'" + tokens.get(--indice).data + "' no es de clase architecture";
         try {
             if( !match("PUNTOYCOMA", nextStrTokenType()))
                 return "ERROR: Se esperaba: ';', recibido: " + tokens.get(--indice).data;
@@ -286,14 +339,18 @@ public class PseudoParser2 {
         return "PROGRAMA";
     }
 
+    public ArrayList<Simbolo> getArraSimbolos() {
+        return tabla.getArraSimbolos();
+    }
+
     private String nextStrTokenType() {
         return tokens.get(indice++).type.toString();
     }
 
     private boolean match(String expresion, String valor) {
+//        System.out.println("Cheking: " + expresion + " and " + valor);
         Pattern patron = Pattern.compile(expresion);
         Matcher m = patron.matcher(valor);
-        System.out.println("Cheking: " + expresion + " and " + valor);
         return m.find();
     }
 }

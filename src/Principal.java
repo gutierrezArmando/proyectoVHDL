@@ -1,14 +1,16 @@
 import analizadores.*;
 import soporte.Simbolo;
-import soporte.TablaSimbolos;
+
+import java.util.ArrayList;
 
 public class Principal {
     public static void main(String[] args) {
-//        PseudoParser parser = new PseudoParser( new Lexer(Archivo.leerArchivo("prueba.vhd")));
-//        System.out.println("Result: " + parser.programaCorrecto());
-        TablaSimbolos tablaSimbolos = new TablaSimbolos();
-        tablaSimbolos.put("library", new Simbolo("library","palabra reservada"));
-
-        System.out.println(tablaSimbolos.exist("use"));
+        PseudoParser2 parser = new PseudoParser2( new Lexer(Archivo.leerArchivo("prueba.vhd")));
+        System.out.println("Result: " + parser.programaCorrecto());
+        ArrayList<Simbolo> simbolos;
+        simbolos = parser.getArraSimbolos();
+        for(Simbolo simbolo: simbolos)
+            if(!simbolo.getClase().equals("palabra reservada"))
+                System.out.println(simbolo);
      }
 }
