@@ -1,12 +1,10 @@
 package analizadores;
 
-import soporte.TablaSimbolos;
-
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PseudoParser {
+public class PseudoParser2 {
 
     private ArrayList<Lexer.Token> tokens;
     private Lexer.Token token;
@@ -15,12 +13,12 @@ public class PseudoParser {
     private String nombreArquitectura;
     private String msg;
 
-    public PseudoParser() {
+    public PseudoParser2() {
         this(null);
     }
 
     /** Constructor */
-    public PseudoParser(Lexer lexer) {
+    public PseudoParser2(Lexer lexer) {
         tokens = new ArrayList<Lexer.Token>();
         while ((token = lexer.nextToken())!=null)
             tokens.add(token);

@@ -7,7 +7,7 @@ public class Principal {
 //        PseudoParser parser = new PseudoParser( new Lexer(Archivo.leerArchivo("prueba.vhd")));
 //        System.out.println("Result: " + parser.programaCorrecto());
         TablaSimbolos tablaSimbolos = new TablaSimbolos();
-        tablaSimbolos.put("library", new Simbolo("library"));
+        tablaSimbolos.put("library", new Simbolo("library","palabra reservada"));
 
         System.out.println(tablaSimbolos.exist("use"));
      }

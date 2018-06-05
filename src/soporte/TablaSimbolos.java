@@ -1,5 +1,6 @@
 package soporte;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class TablaSimbolos {
@@ -10,24 +11,32 @@ public class TablaSimbolos {
         tabla = new HashMap<>();
     }
 
-    public HashMap<String, Simbolo> getTabla() {
-        return tabla;
+//    public HashMap<String, Simbolo> getTabla() {
+//        return tabla;
+//    }
+
+//    public void setTabla(HashMap<String, Simbolo> tabla) {
+//        this.tabla = tabla;
+//    }
+
+    public void put(String clave, Simbolo simbolo) {
+        tabla.put(clave, simbolo);
     }
 
-    public void setTabla(HashMap<String, Simbolo> tabla) {
-        this.tabla = tabla;
+    public Simbolo get(String clave) {
+        return tabla.get(clave);
     }
 
-    public void put(String nombre, Simbolo simbolo) {
-        tabla.put(nombre, simbolo);
-    }
+    public boolean exist(String clave) { return tabla.containsKey(clave); }
 
-    public Simbolo get(String nombre) {
-        return tabla.get(nombre);
-    }
+    public String getClase(String clave) { return tabla.get(clave).getClase(); }
 
-    public boolean exist(String nombre) {
-        return tabla.get(nombre)!=null?true:false;
+    public String getTipoES(String clave) { return tabla.get(clave).getTipo_es(); }
+
+    public String getTipoDato(String clave) { return tabla.get(clave).getTipo_dato(); }
+
+    public Simbolo[] getTabla() {
+        return (Simbolo[]) tabla.values().toArray();
     }
 
 }

@@ -6,13 +6,6 @@ public class Simbolo {
     private String tipo_es;
     private String tipo_dato;
 
-    public Simbolo(String nombre) {
-        this.setNombre(nombre);
-        this.setClase("palabra_reservada");
-        this.setTipo_es("");
-        this.setTipo_dato("");
-    }
-
     public Simbolo(String nombre, String clase) {
         this.setNombre(nombre);
         this.setClase(clase);
