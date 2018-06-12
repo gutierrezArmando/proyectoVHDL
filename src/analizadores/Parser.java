@@ -1,11 +1,13 @@
 package analizadores;
 
+import soporte.Simbolo;
+import soporte.TablaSimbolos;
+
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import soporte.*;
 
-public class PseudoParser2 {
+public class Parser {
 
     private ArrayList<Lexer.Token> tokens;
     private Lexer.Token token;
@@ -15,35 +17,18 @@ public class PseudoParser2 {
     private String msg;
     private TablaSimbolos tabla;
 
-    public PseudoParser2() {
+    public Parser() {
         this(null);
     }
 
     /** Constructor */
-    public PseudoParser2(Lexer lexer) {
+    public Parser(Lexer lexer) {
         tokens = new ArrayList<Lexer.Token>();
         indice = 0;
         while ((token = lexer.nextToken())!=null)
             tokens.add(token);
         nombreEntidad = "entidad";
-        inicalizarTablaSimbolos();
-    }
-
-    private void inicalizarTablaSimbolos(){
         tabla = new TablaSimbolos();
-        tabla.addPalabraReservada("library");
-        tabla.addPalabraReservada("use");
-        tabla.addPalabraReservada("entity");
-        tabla.addPalabraReservada("port");
-        tabla.addPalabraReservada("is");
-        tabla.addPalabraReservada("end");
-        tabla.addPalabraReservada("architecture");
-        tabla.addPalabraReservada("of");
-        tabla.addPalabraReservada("begin");
-        tabla.addPalabraReservada("process");
-        tabla.addPalabraReservada("if");
-        tabla.addPalabraReservada("then");
-        tabla.addPalabraReservada("else");
     }
 
     /**Devuelve en forma de cadena todos los token*/
@@ -202,8 +187,10 @@ public class PseudoParser2 {
             return msg;
         if( !match("THEN", nextStrTokenType()))
             return "ERROR: Se esperaba: THEN, recibido: " + tokens.get(--indice).data;
-        if (!match("ENUNCIADO", (msg = enunciadoCorrecto())))
-            return msg;
+        do{
+            if (!match("ENUNCIADO", (msg = enunciadoCorrecto())))
+                return msg;
+        }while (!match("ELSE", tokens.get(indice).type.toString()));
 
         if( !match("ELSE", nextStrTokenType()))
             return "ERROR: Se esperaba: ELSE, recibido: " + tokens.get(--indice).data;
@@ -339,7 +326,7 @@ public class PseudoParser2 {
         return "PROGRAMA";
     }
 
-    public ArrayList<Simbolo> getArraSimbolos() {
+    public ArrayList<Simbolo> getArraySimbolos() {
         return tabla.getArraSimbolos();
     }
 
@@ -348,7 +335,6 @@ public class PseudoParser2 {
     }
 
     private boolean match(String expresion, String valor) {
-//        System.out.println("Cheking: " + expresion + " and " + valor);
         Pattern patron = Pattern.compile(expresion);
         Matcher m = patron.matcher(valor);
         return m.find();
